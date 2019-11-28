@@ -2,11 +2,11 @@ from functools import partial, reduce
 
 class Knapsack:
 
-    def __init__(self):
-        self.num_objects = None
-        self.capacity = None
-        self.values = []
-        self. weights = []
+    def __init__(self,num_objects=None,capacity=None,values=[],weights=[]):
+        self.num_objects = num_objects
+        self.capacity = capacity
+        self.values = values
+        self. weights = weights
 
     def read_values(self,filename):
         file = open(filename,"r")
@@ -22,7 +22,7 @@ class Knapsack:
 
     
     def gen_neighbour_structure(self):
-        self.neighbourhood_structure = [ partial(self.hamming_distance,distance=i) for i in range(1,self.num_objects//2 + 1)]
+        self.neighbour_structure = [ partial(self.hamming_distance,distance=i) for i in range(1,self.num_objects//2 + 1)]
     
     def __str__(self):
         return "Capacity: " + str(self.capacity) + "\n" + \
@@ -33,12 +33,14 @@ class Knapsack:
     def evaluation_function(self,x):
 
         value = 0
+        print("Sol: " + str(x))
         solution = int(x,2)
 
         for i in range(self.num_objects):
+            
+            value+=((solution>>i) & 1) * self.values[i]
 
-            value+=(solution & (1<<i)) * self.values[i]
-
+        print("Value: " + str(value))
         return value
 
     def feasible_solution(self,x):

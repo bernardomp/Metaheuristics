@@ -1,14 +1,13 @@
 from functools import reduce
 import random
-import vns
 
-class ReducedVNS(vns.VNS):
+class ReducedVNS():
 
     def __init__(self,problem):
 
         self.problem = problem
         self.evaluation_function = self.problem.evaluation_function
-        self.N = self.problem.neighbourhood_structure
+        self.N = self.problem.neighbour_structure
 
         self.k_max = len(self.N)
         self.k = 1
@@ -21,7 +20,10 @@ class ReducedVNS(vns.VNS):
         neighbourhood_structure = self.N[self.k]
         neighbours = list(neighbourhood_structure(x=self.x))
 
-        return random.choice(neighbourhood_structure)
+        rnd_neighbour = random.choice(neighbours)
+        print("Shake: " + str(rnd_neighbour))
+
+        self.x_prime = rnd_neighbour
 
     
     def neighbourhood_change_sequential(self):
@@ -37,8 +39,10 @@ class ReducedVNS(vns.VNS):
         for i in range(1):
             self.k = 1
             while self.k<self.k_max:
-                shake()
-                neighbourhood_change_sequential()
+                self.shake()
+                self.neighbourhood_change_sequential()
+        
+        return self.x
 
 
    

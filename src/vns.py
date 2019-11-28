@@ -6,5 +6,5 @@ class VNS:
     def shake(self, x,k,N):
         pass
 
-    def neighbourhood_change(x,x_prime, k,eval_sol):
+    def neighbourhood_change(self,x,x_prime, k,eval_sol):
         pass

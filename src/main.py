@@ -1,20 +1,18 @@
-from Knapsack import Knapsack
 from reducedVNS import ReducedVNS
+from Knapsack import Knapsack
 
 def main():
     
     knap = Knapsack()
-    knap.read_values("VNS/input/input1.txt")
-    knap.neighbourhood_structure()
-    print(knap.neighbourhood_structure[0])
+    knap.read_values("input/input1.txt")
+    knap.gen_neighbour_structure()
+    print(knap.neighbour_structure[0])
 
-    #print(ass("000"))
 
-    #reduced = ReducedVNS(knap)
+    reduced = ReducedVNS(knap)
 
-    #reduced.solve()
-
-    print
+    x = reduced.solve()
+    print(x)
 
 
 if __name__ == "__main__":
