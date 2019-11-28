@@ -1,6 +1,6 @@
 import pytest
 import sys
-from src.functions import *
+from src.Knapsack import *
 
 
 def test_hamming_distance_one():
@@ -15,9 +15,10 @@ def test_hamming_distance_one():
         ['0101','1001','1111','1100']
         ]
 
+    knap = Knapsack()
+    
     for i in range(len(input)):
-
-        assert hamming_distance_one(input[i]) == result[i]
+        assert knap.hamming_distance_one(input[i]) == result[i]
 
 
 def test_hamming_distance():
@@ -27,7 +28,9 @@ def test_hamming_distance():
         ("0000",3, set(['1000','0100','0010','0001','1100','1010','1001','0110','0101','0011','1110','1101','1011','0111']))
     ]
 
+    knap = Knapsack()
+
     for test in tests:
-        assert hamming_distance(test[0],test[1]) == test[2]
+        assert knap.hamming_distance(test[0],test[1]) == test[2]
    
    
