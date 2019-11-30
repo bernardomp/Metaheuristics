@@ -1,9 +1,9 @@
 import pytest
 import sys
-from src.Knapsack import *
-from src.reducedVNS import *
+from src.Knapsack import Knapsack
+from src.reducedVNS import ReducedVNS
 
-def test_shake():
+def test_shakes():
     knap = Knapsack()
     knap.read_values("input/input1.txt")
     knap.gen_neighbour_structures()
