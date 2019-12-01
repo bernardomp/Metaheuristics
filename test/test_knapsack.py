@@ -1,6 +1,7 @@
 import pytest
 import sys
-from ..src.Knapsack import *
+sys.path.append('src')
+from src.Knapsack import Knapsack
 
 def test_hamming_distance():
 
@@ -54,3 +55,13 @@ def test_gen_neighbourhood():
     for test in tests:
         knap = Knapsack(num_objects=test[1],capacity=test[2],weights=test[4])
         assert sorted(knap.gen_neighbourhood(test[0],distance=test[3])) == sorted(test[5])
+
+def test_read_values():
+    knap = Knapsack()
+    knap.read_values("input/input1.txt")
+
+    assert knap.__str__() == "Capacity: 80\n" + \
+        "Objects: 6\n" + \
+        "Values: [100.0, 600.0, 1200.0, 2400.0, 500.0, 2000.0]\n" + \
+        "Weights: [8.0, 12.0, 13.0, 64.0, 22.0, 41.0]"
+ 

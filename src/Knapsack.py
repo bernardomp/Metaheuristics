@@ -45,7 +45,7 @@ class Knapsack:
     def gen_neighbourhood(self,x=None,distance=1):
         potencial_neighbours = self.hamming_distance(x,distance)
         potencial_neighbours = list(filter(self.feasible_solution,potencial_neighbours))
-
+    
         return potencial_neighbours
     
     def gen_neighbour_structures(self):

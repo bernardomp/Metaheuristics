@@ -17,11 +17,8 @@ class VNS():
         '''
         Generates a random initial solution
         '''
-        self.k = random.randint(0,self.k_max-1) # Selection a random neighbour structure
-        initial_sol = self.shake("0"*self.problem.num_objects)
-        self.k = 0
 
-        return initial_sol
+        return [0 for i in range(self.problem.num_objects)]
 
     def shake(self,x_cur):
         '''
@@ -30,12 +27,14 @@ class VNS():
                 x_cur (str): A problem solution
         '''
         neighbourhood_structure = self.N[self.k]
-        neighbours = list(neighbourhood_structure(x_cur))
+        neighbours = list(neighbourhood_structure(x=x_cur))
 
         return random.choice(neighbours)
 
     
     def neighbourhood_change_sequential(self,x_cur,x_new,l=None):
+
+        x_aux = None
 
         if l == None:
             k = self.k
@@ -43,17 +42,19 @@ class VNS():
             k = l
 
         if self.evaluation_function(x_cur)<self.evaluation_function(x_new):
-            x_cur = x_new
+            x_aux = x_new
             k=0
-            print("     New solution: " + str(x_cur) + " ------> Value: " + str(self.evaluation_function(x_cur)))
+            print("     New solution: " + str(x_aux) + " ------> Value: " + str(self.evaluation_function(x_aux)))
         else:
             k+=1
+            x_aux = x_cur
+
 
         if l == None:
             self.k = k
-            return x_cur
+            return x_aux
         else:
-            return x_cur,k
+            return x_aux,k
         
     
     def improvement_function(self,x_cur):

@@ -1,16 +1,16 @@
-from src.reducedVNS import ReducedVNS
-from src.basicVNS import BasicVNS
-from src.generalVNS import GeneralVNS
-from src.Knapsack import Knapsack
+from Knapsack import Knapsack
+from generalVNS import GeneralVNS
+from reducedVNS import ReducedVNS
+from basicVNS import BasicVNS
 
 def main():
     
     knap = Knapsack()
-    knap.read_values("input/input3.txt")
+    knap.read_values("input/input2.txt")
     knap.gen_neighbour_structures()
+   
 
-
-    reduced = GeneralVNS(knap,seed=0)
+    reduced = BasicVNS(knap,seed=0)
     print("SOLVING")
     x = reduced.solve()
     print(x)
