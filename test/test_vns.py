@@ -1,14 +1,14 @@
 import pytest
 import sys
-from src.Knapsack import Knapsack
-from src.reducedVNS import ReducedVNS
+from ..src.Knapsack import Knapsack
+from ..src.vns import VNS
 
 def test_shakes():
     knap = Knapsack()
     knap.read_values("input/input1.txt")
     knap.gen_neighbour_structures()
 
-    reduced = ReducedVNS(knap,seed=0)
+    vns = VNS(knap,seed=0)
 
     tests = [
         ("000000",["100000","010000","001000","000100","000010","000001"]),
@@ -18,4 +18,4 @@ def test_shakes():
     
     for test in tests:
 
-        assert reduced.shake(test[0]) in test[1]
+        assert vns.shake(test[0]) in test[1]

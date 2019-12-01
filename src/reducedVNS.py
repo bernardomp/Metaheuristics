@@ -1,6 +1,6 @@
 from functools import reduce
 import random
-from src.vns import VNS
+from ..src.vns import VNS
 
 class ReducedVNS(VNS):
 

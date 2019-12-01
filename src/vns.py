@@ -48,7 +48,6 @@ class VNS():
             print("     New solution: " + str(x_cur) + " ------> Value: " + str(self.evaluation_function(x_cur)))
         else:
             k+=1
-            print("     No improvement. Changing to neighbour structure " + str(self.k+1))
 
         if l == None:
             self.k = k
