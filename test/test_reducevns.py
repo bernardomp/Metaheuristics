@@ -1,7 +1,7 @@
 import pytest
 import sys
-from ..src.Knapsack import Knapsack
-from ..src.reducedVNS import ReducedVNS
+from Knapsack import Knapsack
+from reducedVNS import ReducedVNS
 
 def test_solve():
     knap = Knapsack()

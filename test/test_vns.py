@@ -1,7 +1,7 @@
 import pytest
 import sys
-from ..src.Knapsack import Knapsack
-from ..src.vns import VNS
+from Knapsack import Knapsack
+from vns import VNS
 
 def test_shakes():
     knap = Knapsack()

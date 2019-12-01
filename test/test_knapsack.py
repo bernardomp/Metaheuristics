@@ -1,7 +1,6 @@
 import pytest
 import sys
-sys.path.append('src')
-from src.Knapsack import Knapsack
+from Knapsack import Knapsack
 
 def test_hamming_distance():
 
