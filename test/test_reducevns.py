@@ -1,5 +1,6 @@
 import pytest
-import sys
+import sys,os
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 from Knapsack import Knapsack
 from reducedVNS import ReducedVNS
 
@@ -12,4 +13,4 @@ def test_solve():
     reduced = ReducedVNS(knap,seed=1)
     x = reduced.solve()
 
-    assert x == "111001" 
+    assert x == [1,1,1,0,0,1]

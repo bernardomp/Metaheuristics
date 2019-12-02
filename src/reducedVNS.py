@@ -15,6 +15,7 @@ class ReducedVNS(VNS):
             while self.k<self.k_max:
                 x_new = self.shake(x)
                 x = self.neighbourhood_change_sequential(x,x_new)
+                print("     Current solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
         
         print("Best solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
         return x

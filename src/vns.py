@@ -44,7 +44,7 @@ class VNS():
         if self.evaluation_function(x_cur)<self.evaluation_function(x_new):
             x_aux = x_new
             k=0
-            print("     New solution: " + str(x_aux) + " ------> Value: " + str(self.evaluation_function(x_aux)))
+            #print("     New solution: " + str(x_aux) + " ------> Value: " + str(self.evaluation_function(x_aux)))
         else:
             k+=1
             x_aux = x_cur

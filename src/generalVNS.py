@@ -35,6 +35,7 @@ class GeneralVNS(VNS):
                 x_new = self.shake(x)
                 x_local = self.improvement_function(x_new)
                 x = self.neighbourhood_change_sequential(x,x_local)
+                print("     Current solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
         
         print("Best solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
         return x

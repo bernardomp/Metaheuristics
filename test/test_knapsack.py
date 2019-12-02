@@ -1,5 +1,6 @@
 import pytest
-import sys
+import sys,os
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 from Knapsack import Knapsack
 
 def test_hamming_distance():
