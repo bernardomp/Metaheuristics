@@ -27,7 +27,7 @@ class BasicVNS(VNS):
                 print("     Current solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
         
         print("Best solution: " + str(x) + " -----> Value: " + str(self.evaluation_function(x)))
-        return x
+        return x,self.evaluation_function(x)
 
 
    
