@@ -6,6 +6,6 @@ class VNS_MUltistart():
     
     def solve(self):
 
-        aux = [self.vns_problem(seed=i) for i in range(0,self.iterations)]
+        aux = [self.vns_problem.solve(seed=i) for i in range(0,self.iterations)]
 
         return zip(*aux)

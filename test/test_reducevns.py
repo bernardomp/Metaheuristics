@@ -10,7 +10,7 @@ def test_solve():
     knap.gen_neighbour_structures()
 
 
-    reduced = ReducedVNS(knap,seed=1)
-    x = reduced.solve()
+    reduced = ReducedVNS(knap)
+    x = reduced.solve(seed=1)
 
-    assert x == [1,1,1,0,0,1]
+    assert x[0] == [1,1,1,0,0,1]

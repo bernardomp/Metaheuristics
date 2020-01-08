@@ -12,7 +12,7 @@ def main():
     knap.gen_neighbour_structures()
 
 
-    x = [knap.evaluation_function(GeneralVNS(knap,seed=i).solve()) for i in range(100)]
+    x = [GeneralVNS(knap).solve(seed=i)[1] for i in range(100)]
 
     print(sum(x)/100)
 if __name__ == "__main__":

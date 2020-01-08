@@ -3,9 +3,7 @@ import random
 
 class VNS():
 
-    def __init__(self,problem,seed=0):
-
-        random.seed(seed)
+    def __init__(self,problem):
 
         self.problem = problem
         self.evaluation_function = self.problem.evaluation_function
@@ -27,7 +25,7 @@ class VNS():
                 x_cur (str): A problem solution
         '''
         neighbourhood_structure = self.N[self.k]
-        neighbours = list(neighbourhood_structure(x=x_cur))
+        neighbours = neighbourhood_structure(x=x_cur)
 
         return random.choice(neighbours)
 
@@ -60,8 +58,9 @@ class VNS():
     def improvement_function(self,x_cur):
         pass
 
-    def solve(self):
-       pass
+    def solve(self,seed=0):
+        random.seed(seed)
+
 
 
    

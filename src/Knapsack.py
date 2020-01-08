@@ -79,9 +79,16 @@ class Knapsack:
         Args:
             x (str): The binary string to be checked
         '''
-        weight = sum(np.multiply(x,self.weights))
+        weight = 0
+        
+        for index in range(self.num_objects):
 
-        return weight<=self.capacity
+            weight+= self.weights[index] * x[index]
+
+            if weight> self.capacity:
+                return False
+        
+        return True
 
 
     def hamming_distance(self,x,distance=1):
@@ -114,3 +121,13 @@ class Knapsack:
             aux[pos] = 1 - aux[pos]
     
         return aux
+    
+    def flip_bitsv2(self,x,positions=[]):
+    
+        aux = np.array(x)
+        print(aux,positions)
+        
+        aux[positions] = map(lambda x: 1-x, aux[positions])
+    
+        return aux
+    

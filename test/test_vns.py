@@ -10,7 +10,7 @@ def test_shakes():
     knap.read_values("input/input1.txt")
     knap.gen_neighbour_structures()
 
-    vns = VNS(knap,seed=0)
+    vns = VNS(knap)
 
     tests = [
         ([0,0,0,0,0,0],[[1,0,0,0,0,0],[0,1,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]]),
