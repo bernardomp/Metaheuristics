@@ -3,7 +3,7 @@ import sys,os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 
 from Knapsack import Knapsack
-from vns import VNS
+from algorithms.vns import VNS
 
 def test_shakes():
     knap = Knapsack()

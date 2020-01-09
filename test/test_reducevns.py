@@ -2,7 +2,7 @@ import pytest
 import sys,os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 from Knapsack import Knapsack
-from reducedVNS import ReducedVNS
+from algorithms.reducedVNS import ReducedVNS
 
 def test_solve():
     knap = Knapsack()
