@@ -122,12 +122,3 @@ class Knapsack:
     
         return aux
     
-    def flip_bitsv2(self,x,positions=[]):
-    
-        aux = np.array(x)
-        print(aux,positions)
-        
-        aux[positions] = map(lambda x: 1-x, aux[positions])
-    
-        return aux
-    

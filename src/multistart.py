@@ -1,4 +1,4 @@
-class VNS_MUltistart():
+class VNS_Multistart():
     
     def __init__(self,iterations = 1, vns_problem=None):
         self.iterations = iterations
@@ -6,6 +6,13 @@ class VNS_MUltistart():
     
     def solve(self):
 
-        aux = [self.vns_problem.solve(seed=i) for i in range(0,self.iterations)]
+        solutions = []
+        values = []
 
-        return zip(*aux)
+        for i in range(0,self.iterations):
+            sol, value = self.vns_problem.solve(seed=i)
+
+            solutions.append(sol)
+            values.append(value)
+
+        return [solutions, values] 

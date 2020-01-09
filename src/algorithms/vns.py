@@ -13,7 +13,7 @@ class VNS():
     
     def gen_initial_solution(self):
         '''
-        Generates a random initial solution
+        Generates an initial solution
         '''
 
         return [0 for i in range(self.problem.num_objects)]
@@ -30,15 +30,10 @@ class VNS():
         return random.choice(neighbours)
 
     
-    def neighbourhood_change_sequential(self,x_cur,x_new,l=None):
+    def neighbourhood_change_sequential(self,x_cur,x_new,k):
 
         x_aux = None
-
-        if l == None:
-            k = self.k
-        else:
-            k = l
-
+        
         if self.evaluation_function(x_cur)<self.evaluation_function(x_new):
             x_aux = x_new
             k=0
@@ -47,14 +42,9 @@ class VNS():
             k+=1
             x_aux = x_cur
 
+        return x_aux,k
 
-        if l == None:
-            self.k = k
-            return x_aux
-        else:
-            return x_aux,k
-        
-    
+
     def improvement_function(self,x_cur):
         pass
 
