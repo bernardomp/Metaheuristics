@@ -13,8 +13,8 @@ class GeneralVNS(VNS):
             x_aux = x_cur
 
             while level<self.k_max:
-                neighbourhood_structure = self.N[level]
-                neighbours = list(neighbourhood_structure(x_cur))
+
+                neighbours = self.problem.gen_neighbourhood(x=x_cur,distance=level)
 
                 x_best = max(neighbours,key=self.evaluation_function)
                 x_cur,level = self.neighbourhood_change_sequential(x_cur,x_best,level)

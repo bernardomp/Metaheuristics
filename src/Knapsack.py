@@ -51,12 +51,9 @@ class Knapsack:
     def gen_neighbour_structures(self):
         k_max = 0
 
-        if self.num_objects < 5:
-            k_max=self.num_objects//2 + 1
-        else:
-            k_max = 6
+        
 
-        self.neighbour_structure = [ partial(self.gen_neighbourhood,distance=i) for i in range(1,k_max)]
+
         
     def __str__(self):
         return "Capacity: " + str(self.capacity) + "\n" + \
@@ -100,24 +97,15 @@ class Knapsack:
             Returns
                 An array of solutions with hamming distance 1 respect to x
         '''
-    
-        neighbours = None
 
-        if distance == 1:
-            print("hola")
-            neighbours = [self.flip_bits(x,positions=[pos]) for pos in range(self.num_objects)]
-            print("sss" + str(neighbours))
-        
-        else:
-            combs = combinations(range(self.num_objects),distance)
-            print("ho11la")
-            neighbours = np.array([self.flip_bits(x,positions=comb) for comb in combs])
+        combs = combinations(range(self.num_objects),distance)
     
-        return neighbours
+        return np.array([self.flip_bits(x,positions=comb) for comb in combs])
+    
     
     def flip_bits(self,x,positions=[]):
     
-        aux = x[:]
+        aux = np.copy(x)
 
         for pos in positions:
             aux[pos] = 1 - aux[pos]

@@ -6,8 +6,7 @@ class BasicVNS(VNS):
     
     def improvement_function(self,x_cur):
 
-        neighbourhood_structure = self.N[self.k]
-        neighbours = list(neighbourhood_structure(x_cur))
+        neighbours = self.problem.gen_neighbourhood(x=x_cur,distance=self.k)
 
         return max(neighbours,key=self.evaluation_function)
 
