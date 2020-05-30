@@ -9,14 +9,13 @@ class VNS():
         self.problem = problem
         self.evaluation_function = self.problem.evaluation_function
         
-
-        self.k =0 # Reset neighbour structure to the first structure
+        self.k = 1 # Reset neighbour structure to the first structure
 
         #Defines the maximum number of neighbourhood structures
-        if self.problem.num_objects < 5:
+        if self.problem.num_objects < 10:
             self.k_max=self.problem.num_objects//2 + 1
         else:
-            self.k_max = 6
+            self.k_max = 7
 
    
     def gen_initial_solution(self):
@@ -24,7 +23,6 @@ class VNS():
         Generates an initial solution
         '''
     
-        
         initial_sol = np.random.randint(2,size=self.problem.num_objects)
 
         while(self.problem.feasible_solution(initial_sol) == False):
@@ -53,7 +51,7 @@ class VNS():
 
         if self.evaluation_function(x_cur)<self.evaluation_function(x_new):
             x_aux = x_new
-            k=0
+            k=1
         else:
             k+=1
             x_aux = x_cur

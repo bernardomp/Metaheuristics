@@ -5,11 +5,12 @@ from algorithms.basicVNS import BasicVNS
 from algorithms.generalVNS import GeneralVNS
 import time,csv
 
-algorithms_repeats = 5
+ALGORITHM_REPEATS = 30
+FILE_OUTPUT = "2.csv"
 
 for algorithm in ["ReducedVNS", "BasicVNS", "GeneralVNS"]:
 
-    csvfile = open('output/' + algorithm + ".csv",'w') #creating  a csv writer object
+    csvfile = open('output/' + algorithm + FILE_OUTPUT,'w') #creating  a csv writer object
 
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(["Testcase", "Algorithm", "Repeats", "Min_value", "Mean_value", "Max_value", "Time_per_iter"])
@@ -33,15 +34,15 @@ for algorithm in ["ReducedVNS", "BasicVNS", "GeneralVNS"]:
     
     
             knap = Knapsack(elements,capacity,values,weights)
-            knap.gen_neighbour_structures()
 
             vns_algorithm = globals()[algorithm](knap)
-            x = VNS_Multistart(algorithms_repeats,vns_algorithm)
+            x = VNS_Multistart(ALGORITHM_REPEATS,vns_algorithm)
 
+            print("Solving")
             begin_time = time.time()
             sol = x.solve()
             end_time = time.time()
 
-            csvwriter.writerow([test_case, algorithm, algorithms_repeats, min(sol[1]), sum(sol[1])/algorithms_repeats, max(sol[1]), (end_time-begin_time)/algorithms_repeats])
+            csvwriter.writerow([test_case, algorithm, ALGORITHM_REPEATS, min(sol[1]), sum(sol[1])/ALGORITHM_REPEATS, max(sol[1]), (end_time-begin_time)/ALGORITHM_REPEATS])
 
     csvfile.close()

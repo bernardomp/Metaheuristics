@@ -47,13 +47,6 @@ class Knapsack:
        
         return list(filter(self.feasible_solution,potencial_neighbours))
 
-    
-    def gen_neighbour_structures(self):
-        k_max = 0
-
-        
-
-
         
     def __str__(self):
         return "Capacity: " + str(self.capacity) + "\n" + \
@@ -61,15 +54,23 @@ class Knapsack:
         "Values: " + str(self.values) + "\n" + \
         "Weights: " + str(self.weights)
 
+
     def evaluation_function(self,x):
         '''
         Computes the fitness or value of a given solution x
         Args:
             x (str): The binary string to be checked
         '''
-        return sum(np.multiply(x,self.values))
+        value = 0
+        
+        for index in range(self.num_objects):
 
+            if x[index] == 1:
+                value+= self.values[index]
+        
+        return value
 
+    
     def feasible_solution(self,x):
         '''
         Checks if the solution x fulfill the problem constraints
@@ -80,12 +81,14 @@ class Knapsack:
         
         for index in range(self.num_objects):
 
-            weight+= self.weights[index] * x[index]
+            if x[index] == 1:
+                weight+= self.weights[index]
 
-            if weight> self.capacity:
-                return False
+                if weight> self.capacity:
+                    return False
         
         return True
+
 
 
     def hamming_distance(self,x,distance=1):

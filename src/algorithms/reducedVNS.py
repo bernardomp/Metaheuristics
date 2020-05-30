@@ -11,7 +11,7 @@ class ReducedVNS(VNS):
        
         for i in range(3):
 
-            self.k = 0
+            self.k = 1
 
             while self.k<self.k_max:
             

@@ -9,7 +9,7 @@ class GeneralVNS(VNS):
         stop = False
 
         while stop==False:
-            level = 0
+            level = 1
             x_aux = x_cur
 
             while level<self.k_max:
@@ -31,7 +31,7 @@ class GeneralVNS(VNS):
 
         for i in range(3):
            
-            self.k = 0
+            self.k = 1
 
             while self.k<self.k_max:
                 x_new = self.shake(x_cur)
