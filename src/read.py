@@ -1,8 +1,8 @@
 import csv
 import time
 
-from src.Knapsack import Knapsack
-from src.multistart import VnsMultistart
+from Knapsack import Knapsack
+from multistart import VnsMultistart
 
 ALGORITHM_REPEATS = 30
 FILE_OUTPUT = "v2.csv"

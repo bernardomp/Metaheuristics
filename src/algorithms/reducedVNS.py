@@ -1,4 +1,4 @@
-from src.algorithms.vns import VNS
+from algorithms.vns import VNS
 
 
 class ReducedVNS(VNS):
