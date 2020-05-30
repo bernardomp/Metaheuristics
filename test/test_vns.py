@@ -1,3 +1,6 @@
+import sys
+
+sys.path.append('../src')
 from src.Knapsack import Knapsack
 from src.algorithms.vns import VNS
 
