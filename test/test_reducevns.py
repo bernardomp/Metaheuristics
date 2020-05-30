@@ -1,13 +1,15 @@
-import pytest
-import sys,os,numpy
+import os
+import sys
+
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 from Knapsack import Knapsack
 from algorithms.reducedVNS import ReducedVNS
 
+
 def test_solve():
     knap = Knapsack()
     knap.read_values("input/input1.txt")
-   
+
     reduced = ReducedVNS(knap)
     x = reduced.solve(seed=1)
     print(x)

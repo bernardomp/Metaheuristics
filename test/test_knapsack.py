@@ -1,4 +1,9 @@
-from src.Knapsack import Knapsack
+import os
+import sys
+
+from Knapsack import Knapsack
+
+sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 
 
 def test_hamming_distance():
