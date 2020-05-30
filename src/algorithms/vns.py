@@ -37,7 +37,7 @@ class VNS:
 
         return neighbours[element]
 
-    def neighbourhood_change_sequential(self, x_cur, x_new, k):
+    def neighbourhood_change_sequential(self, x_cur: list, x_new: list, k: int):
 
         x_aux = None
 
