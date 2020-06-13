@@ -5,10 +5,11 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/../src")
 from Knapsack import Knapsack
 from algorithms.generalVNS import GeneralVNS
 
+INPUT_FILE = "test/testing_files/input1.txt"
 
 def test_solve():
     knap = Knapsack()
-    knap.read_values("input/input1.txt")
+    knap.read_values(INPUT_FILE)
 
     general = GeneralVNS(knap)
     x = general.solve(seed=1)

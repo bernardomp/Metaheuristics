@@ -1,6 +1,9 @@
 class VnsMultistart:
+    """
+    This provides provides a method to execute several runs of an algorithm
+    """
 
-    def __init__(self, iterations=1, vns_problem=None):
+    def __init__(self, iterations: int = 1, vns_problem: object = None):
         self.iterations = iterations
         self.vns_problem = vns_problem
 

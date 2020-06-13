@@ -62,10 +62,10 @@ def test_gen_neighbourhood():
 
 
 def test_read_values():
-    input_file = "input/input1.txt"
+    INPUT_FILE = "test/testing_files/input1.txt"
 
     knap = Knapsack()
-    knap.read_values(input_file)
+    knap.read_values(INPUT_FILE)
 
     assert knap.__str__() == "Capacity: 80\n" + \
            "Objects: 6\n" + \

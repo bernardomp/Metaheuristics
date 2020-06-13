@@ -1,21 +1,32 @@
+import argparse
 import csv
 import time
 
 from Knapsack import Knapsack
 from multistart import VnsMultistart
 
-ALGORITHM_REPEATS = 30
-FILE_OUTPUT = "v2.csv"
+example_text = "Example: python3 metaheuristic 30 input/inputs.txt ./ BasicVNS ReducedVNS"
+parser = argparse.ArgumentParser(epilog=example_text)
+parser.add_argument("repeats", help="number of repeats for each algorithm", type=int)
+parser.add_argument("input", help="filepath containing the input data", type=str)
+parser.add_argument("output", help="filepath containing the output data", type=str)
+parser.add_argument("algorithms", help="list of algorithms: ReducedVNS, BasicVNS or GeneralVNS", type=str, nargs="+")
+args = parser.parse_args()
 
-for algorithm in ["GeneralVNS", "BasicVNS", "ReducedVNS"]:
+ALGORITHM_REPEATS = args.repeats
+FILE_INPUT = args.input
+FILE_OUTPUT = args.output
+ALGORITHMS = args.algorithms
+
+for algorithm in ALGORITHMS:
     print("Starting " + str(algorithm))
 
-    csvfile = open('output/' + algorithm + FILE_OUTPUT, 'a')  # creating  a csv writer object
+    csvfile = open(FILE_OUTPUT + algorithm + ".csv", 'a')  # creating  a csv writer object
 
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(["Testcase", "Algorithm", "Repeats", "Min_value", "Mean_value", "Max_value", "Time_per_iter"])
-
-    with open("input/inputs.txt", "r") as f:
+    csvfile.flush()
+    with open(FILE_INPUT, "r") as f:
 
         test_cases = int(next(f).split(" ")[0])
 
@@ -46,5 +57,6 @@ for algorithm in ["GeneralVNS", "BasicVNS", "ReducedVNS"]:
             csvwriter.writerow(
                 [test_case, algorithm, ALGORITHM_REPEATS, min(sol[1]), sum(sol[1]) / ALGORITHM_REPEATS, max(sol[1]),
                  (end_time - begin_time) / ALGORITHM_REPEATS])
+            csvfile.flush()
 
     csvfile.close()

@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 
 
@@ -8,15 +10,16 @@ class VNS:
         self.problem = problem
         self.evaluation_function = self.problem.evaluation_function
 
-        self.k = 1  # Reset neighbour structure to the first structure
+        # Reset neighbour structure to the first structure
+        self.k = 1
 
         # Defines the maximum number of neighbourhood structures
         self.k_max = 5
 
-    def gen_initial_solution(self):
-        '''
+    def gen_initial_solution(self) -> list:
+        """
         Generates an initial solution
-        '''
+        """
 
         initial_sol = np.random.randint(2, size=self.problem.num_objects)
 
@@ -25,19 +28,19 @@ class VNS:
 
         return initial_sol
 
-    def shake(self, x_cur: list):
-        '''
+    def shake(self, x_cur: list) -> list:
+        """
         Generates randomly a neighbour solution of another solution x_cur given a neighbour structure n
             Args:
-                x_cur (str): A problem solution
-        '''
+                x_cur : A problem solution
+        """
 
         neighbours = self.problem.gen_neighbourhood(x=x_cur, distance=self.k)
         element = np.random.choice(np.arange(len(neighbours)))
 
         return neighbours[element]
 
-    def neighbourhood_change_sequential(self, x_cur: list, x_new: list, k: int):
+    def neighbourhood_change_sequential(self, x_cur: list, x_new: list, k: int) -> Tuple[list, int]:
 
         x_aux = None
 

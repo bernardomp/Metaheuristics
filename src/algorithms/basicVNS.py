@@ -1,15 +1,25 @@
+from typing import Tuple
+
 from algorithms.vns import VNS
 
 
 class BasicVNS(VNS):
 
-    def improvement_function(self, x_cur):
+    def improvement_function(self, x_cur: list) -> list:
+        """
 
+        Args:
+            x_cur: Current solution
+
+        Returns:
+            list: New solution
+
+        """
         neighbours = self.problem.gen_neighbourhood(x=x_cur, distance=self.k)
 
         return max(neighbours, key=self.evaluation_function)
 
-    def solve(self, seed: int):
+    def solve(self, seed: int) -> Tuple[list, float]:
         VNS.solve(seed)
 
         x_cur = self.gen_initial_solution()

@@ -1,11 +1,14 @@
+from typing import Tuple
+
 from algorithms.vns import VNS
 
 
 class GeneralVNS(VNS):
 
-    def improvement_function(self, x_cur):
+    def improvement_function(self, x_cur: list) -> list:
 
         stop = False
+        x_aux = None
 
         while not stop:
             level = 1
@@ -23,7 +26,7 @@ class GeneralVNS(VNS):
 
         return x_aux
 
-    def solve(self, seed: int):
+    def solve(self, seed: int) -> Tuple[list, float]:
         VNS.solve(self, seed)
 
         x_cur = self.gen_initial_solution()

@@ -7,8 +7,9 @@ from algorithms.vns import VNS
 
 
 def test_shakes():
+    INPUT_FILE = "test/testing_files/input1.txt"
     knap = Knapsack()
-    knap.read_values("input/input1.txt")
+    knap.read_values(INPUT_FILE)
 
     vns = VNS(knap)
 
