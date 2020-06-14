@@ -44,7 +44,6 @@ for algorithm in ALGORITHMS:
                 print("Number of weights greater than expected")
 
             knap = Knapsack(elements, capacity, values, weights)
-
             vns_algorithm = globals()[algorithm](knap)
             x = VnsMultistart(ALGORITHM_REPEATS, vns_algorithm)
 

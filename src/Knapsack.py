@@ -22,7 +22,7 @@ class Knapsack:
     def read_values(self, filename: str):
         """
         Args:
-            filename (object):
+            filename (str):
 
         """
         file = open(filename, "r")
@@ -37,6 +37,15 @@ class Knapsack:
         self.weights = list(map(float, lines[2].split(" ")))
 
     def gen_neighbourhood(self, x: list = None, distance: int = 1) -> list:
+        """
+        Generates all the neighbours of x given a hamming distance
+        Args:
+            x: current solution
+            distance: desired hamming distance
+
+        Returns:
+            A list containing of the valid neighbours
+        """
         potential_neighbours = self.hamming_distance(x, distance)
 
         return list(filter(self.feasible_solution, potential_neighbours))
@@ -81,7 +90,7 @@ class Knapsack:
         return True
 
     def hamming_distance(self, x: list, distance: int = 1):
-        '''
+        """
         Given a solution x (represented as a binary string) generates other solutions x1, x2, ..., xn whose
         hamming distance respect to x is distance.
             Args:
@@ -89,7 +98,7 @@ class Knapsack:
                 x (str): A solution of the problem
             Returns
                 An array of solutions with hamming distance 1 respect to x
-        '''
+        """
 
         combs = combinations(range(self.num_objects), distance)
 
